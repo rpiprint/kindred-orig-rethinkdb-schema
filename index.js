@@ -12,7 +12,7 @@ if (args.argv.help) {
 	process.exit();
 }
 
-var fs = require('fs'), r = require('rethinkdbdash')({ host: args.argv.host, port: args.argv.port }), co = require('co'), _ = require('lodash');
+var fs = require('fs'), r = require('rethinkdbdash')({ host: args.argv.host, port: args.argv.port, authKey: args.argv.auth }), co = require('co'), _ = require('lodash');
 
 var schema;
 if (fs.existsSync(process.cwd() + '/rethinkdb-schema.json'))

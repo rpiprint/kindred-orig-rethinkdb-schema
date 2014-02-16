@@ -10,7 +10,7 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "optimist": "~0.6.1",
-    "rethinkdbdash": "~1.11.6",
+    "rethinkdbdash": "~1.11.7",
     "co": "~3.0.2",
     "lodash": "~2.4.1"
   }
