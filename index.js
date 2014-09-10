@@ -6,9 +6,9 @@ var run = function (schema, options) {
 		B = require('bluebird');
 	if (typeof schema == 'function') schema = schema(r);
 
-	function uncursorify(l) { return l.toArray(); }
+	function uncursorify(l) { if (Array.isArray(l)) { return l; } return l.toArray(); }
 
-	return r.dbList().run().then(uncursorify).then(function(dbs) {	
+	return r.dbList().run().then(function(dbs) {	
 		// Create databases
 		var commands = _.map(_.difference(_.keys(schema), dbs), function(db) {
 			return r.dbCreate(db).run();
@@ -77,7 +77,9 @@ var run = function (schema, options) {
 		return B.all(commands);
 	}).then(function() {
 		console.log('Inserted rows and created indexes');
-	}).catch(console.warn).return(r);
+	}).catch(function(e) {
+		console.log(e, e.stack)
+	}).return(r);
 };
 
 if (require.main == module) {

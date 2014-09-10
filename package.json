@@ -12,6 +12,6 @@
     "optimist": "~0.6.1",
     "lodash": "~2.4.1",
     "bluebird": "^1.2.4",
-    "rethinkdbdash": "^1.12.8"
+    "rethinkdbdash": "~1.12.8"
   }
 }
